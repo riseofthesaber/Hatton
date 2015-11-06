@@ -3,7 +3,7 @@ Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
     game.load.image('cube', 'cubes/playercube.png');
-    game.stage.backgroundColor = '#FEFCFF';
+    game.stage.backgroundColor = '#C0C0C0';
     
     
 }// end preload function
