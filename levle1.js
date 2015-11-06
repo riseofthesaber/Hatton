@@ -4,11 +4,9 @@ Phaser.AUTO, '', { preload: preload, create: create, update: update });
 function preload() {
     game.load.image('cube', 'cubes/playercube.png');
     game.stage.backgroundColor = '#C0C0C0';
-<<<<<<< Updated upstream
-    
-=======
+
    game.load.image('WpartG', 'cubes/wallcube(green).png',96,96);   
->>>>>>> Stashed changes
+
     
 }// end preload function
 
