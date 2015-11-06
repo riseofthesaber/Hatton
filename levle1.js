@@ -1,10 +1,14 @@
-var game = new Phaser.Game(800, 600, 
+var game = new Phaser.Game(960, 960, 
 Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
     game.load.image('cube', 'cubes/playercube.png');
     game.stage.backgroundColor = '#C0C0C0';
+<<<<<<< Updated upstream
     
+=======
+   game.load.image('WpartG', 'cubes/wallcube(green).png',96,96);   
+>>>>>>> Stashed changes
     
 }// end preload function
 
@@ -20,6 +24,12 @@ game.physics.arcade.enable(player);
     
 player.body.collideWorldBounds = true;    
 cursors = game.input.keyboard.createCursorKeys();    
+walls = game.add.group();   
+walls.enableBody = true;
+    
+ walls.create(400, 400, 'WpartG');   
+    
+    
 
 
 } // end create function
