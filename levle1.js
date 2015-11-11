@@ -1,5 +1,5 @@
-var game = new Phaser.Game(960, 960, 
-Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(960, 960, Phaser.AUTO,'', {preload: preload, create: create, update: update });
+
 
 function preload() {
     game.load.image('cube', 'cubes/playercube.png');
