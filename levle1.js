@@ -1,5 +1,5 @@
-var game = new Phaser.Game(960, 960, Phaser.AUTO,'', {preload: preload, create: create, update: update });
-
+var game = new Phaser.Game(960, 960, 
+Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
     game.load.image('cube', 'cubes/playercube.png');
@@ -12,7 +12,6 @@ function preload() {
 
 var player;
 var walls;
-var wall
 var cursors;
 var wallGroup;
 function create() {
@@ -21,16 +20,14 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     
     game.physics.arcade.enable(player);
+    
+
 
     player.body.collideWorldBounds = true;    
     cursors = game.input.keyboard.createCursorKeys(); 
     
-    for(wall=1; wall<=10; wall++){
-        walls = game.add.sprite(48*wall,0, 'WpartG');
-    
-    
-    
-    
+    for(var wall=1; wall<=10; wall++){
+     walls = game.add.sprite(48*wall,0, 'WpartG');
     
     
 //    game.add.sprite(48,48, 'WpartG'); 
@@ -42,6 +39,10 @@ function create() {
     walls.animations.add('flashG', [0,1], 4, true);
     walls.animations.play('flashG');
     wallGroup = game.add.group();
+     
+        game.physics.arcade.enable(walls);
+        walls.body.immovable = true;
+        
     }
     
 
@@ -49,6 +50,9 @@ function create() {
 } // end create function
 
 function update() {
+    
+    game.physics.arcade.collide(walls,player);
+    
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
     if (cursors.left.isDown)
@@ -72,7 +76,6 @@ function update() {
         //move right
         player.body.velocity.y = 150;
     }
-    
     
     
 }// end update function
