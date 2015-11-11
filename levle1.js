@@ -12,6 +12,7 @@ function preload() {
 
 var player;
 var walls;
+var wall
 var cursors;
 var wallGroup;
 function create() {
@@ -22,15 +23,26 @@ function create() {
     game.physics.arcade.enable(player);
 
     player.body.collideWorldBounds = true;    
-    cursors = game.input.keyboard.createCursorKeys();    
-    walls = game.add.sprite(50,0, 'WpartG');  
+    cursors = game.input.keyboard.createCursorKeys(); 
+    
+    for(wall=1; wall<=10; wall++){
+        walls = game.add.sprite(48*wall,0, 'WpartG');
+    
+    
+    
+    
+    
+    
+//    game.add.sprite(48,48, 'WpartG'); 
+//    game.add.sprite(96,48, 'WpartG'); 
+//    game.add.sprite(144,48, 'WpartG'); 
     walls.enableBody = true;
 
     // walls.create(400, 400, 'WpartG');   
-    walls.animations.add('flashG', [0,1,0], 10, true);
+    walls.animations.add('flashG', [0,1], 4, true);
     walls.animations.play('flashG');
     wallGroup = game.add.group();
-
+    }
     
 
 
