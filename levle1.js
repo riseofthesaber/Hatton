@@ -1,4 +1,4 @@
-var game = new Phaser.Game(960, 960, 
+var game = new Phaser.Game(960,768, 
 Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
@@ -15,19 +15,22 @@ var walls;
 var cursors;
 var wallGroup;
 function create() {
-    player = game.add.sprite(0, 0, 'cube');
+    player = game.add.sprite(48, 48, 'cube');
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
     
     game.physics.arcade.enable(player);
     
-
+//   function topdownFollow(){
+//    game.camera.follow(player, Phaser.Camera.FOLLOW_TOPDOWN);
+//       style = 'STYLE_TOPDOWN';
+//   }
 
     player.body.collideWorldBounds = true;    
     cursors = game.input.keyboard.createCursorKeys(); 
     
-    for(var wall=1; wall<=10; wall++){
-     walls = game.add.sprite(48*wall,0, 'WpartG');
+    for(var wall=0; wall<=10; wall++){
+     walls = game.add.sprite(48*wall,48, 'WpartG');
     
     
 //    game.add.sprite(48,48, 'WpartG'); 
@@ -45,7 +48,6 @@ function create() {
         
     }
     
-
 
 } // end create function
 
