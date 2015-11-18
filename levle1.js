@@ -16,6 +16,7 @@ var cursors;
 var wallGroup;
 var map;
 var wall;
+var barrier;
 function create() {
     
     
@@ -46,12 +47,9 @@ function create() {
         [3,1], [3,2],[3,3],
         [5,5],[6,5],
         [1,9],[2,9],[3,9],
-        [3,10],
-        [3,11],
-        [10,8],
-        [10,9],
-        [10,10],
-        [10,11],
+        [3,10],[3,11],
+        [10,8],[10,9],[10,10],[10,11],
+        
     ];
     
     for (var WG=0; WG < allwalls.length; WG++) {
