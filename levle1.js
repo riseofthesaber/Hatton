@@ -27,6 +27,11 @@ function create() {
     
     game.physics.arcade.enable(player);
     
+    walls = game.add.sprite(48,0, 'WpartG');
+     walls.animations.add('flashG', [0,1], 4, true);
+    walls.animations.play('flashG');
+    
+    
 //   function topdownFollow(){
 //    game.camera.follow(player, Phaser.Camera.FOLLOW_TOPDOWN);
 //       style = 'STYLE_TOPDOWN';
@@ -37,9 +42,12 @@ function create() {
   
     map=game.add.tilemap();
     map.addTilesetImage('WpartG',null,48,48);
-    walls2=map.create('wallkey',12,12,96,96);
+    walls2=map.create('wallkey',12,12,48,48);
     map.putTile(0,5,5,walls2);
     map.setCollision(0);
+    
+    walls.animations.add('flashG', [0,1], 4, true);
+    walls.animations.play('flashG');
     
     
 //    for(var wall=0; wall<=10; wall++){
