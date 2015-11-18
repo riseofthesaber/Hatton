@@ -15,7 +15,7 @@ var walls;
 var cursors;
 var wallGroup;
 var map;
-var walls2;
+var wall;
 function create() {
     
     
@@ -26,10 +26,6 @@ function create() {
     
     
     game.physics.arcade.enable(player);
-    
-    walls = game.add.sprite(48,0, 'WpartG');
-     walls.animations.add('flashG', [0,1], 4, true);
-    walls.animations.play('flashG');
     
     
 //   function topdownFollow(){
@@ -42,39 +38,45 @@ function create() {
   
     map=game.add.tilemap();
     map.addTilesetImage('WpartG',null,48,48);
-    walls2=map.create('wallkey',12,12,48,48);
-    map.putTile(0,5,5,walls2);
+    wall=map.create('wallkey',12,12,48,48);
+   // map.putTile(0,6,6,wall);
     map.setCollision(0);
     
-    walls.animations.add('flashG', [0,1], 4, true);
-    walls.animations.play('flashG');
+    var allwalls = [
+        [3,1], [3,2],[3,3],
+        [5,5],[6,5],
+        [1,9],[2,9],[3,9],
+        [3,10],
+        [3,11],
+        [10,8],
+        [10,9],
+        [10,10],
+        [10,11],
+    ];
     
+    for (var WG=0; WG < allwalls.length; WG++) {
+        console.log("Adding index #", WG);
+        var coordinates = allwalls[WG];
+        console.log("Coordinates", coordinates);
+        var x = coordinates[0];
+        var y = coordinates[1];
+        map.putTile(0, x, y, wall);
+    }
     
-//    for(var wall=0; wall<=10; wall++){
-//     walls = game.add.sprite(48*wall,0, 'WpartG');
-//    
-//    
-////    game.add.sprite(48,48, 'WpartG'); 
-////    game.add.sprite(96,48, 'WpartG'); 
-////    game.add.sprite(144,48, 'WpartG'); 
-//    walls.enableBody = true;
-//
-//    // walls.create(400, 400, 'WpartG');   
-//    walls.animations.add('flashG', [0,1], 4, true);
-//    walls.animations.play('flashG');
-//    wallGroup = game.add.group();
-//     
-//        game.physics.arcade.enable(walls);
-////        walls.body.immovable = true;
-//        
+//    for(var WG = 1; WG <=4;WG++){
+//        map.putTile(0,4,WG,wall);   
 //    }
-    
+//    for(var WG = 2; WG <=4;WG++){
+//        map.putTile(0,WG,9,wall);   
+//    }
+//    
+
 
 } // end create function
 
 function update() {
     
-    game.physics.arcade.collide(player,walls2);
+    game.physics.arcade.collide(player,wall);
     
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
