@@ -7,10 +7,7 @@ function preload() {
 
    game.load.spritesheet('WpartG', 'cubes/wallcube(green).png',48,48);   
 
-     game.load.spritesheet('BBotBlue', 'cubes/Barior bottom(96,48).png',96,48); 
-    
-    game.load.spritesheet('open', 'cubes/opening portal.png',48,48);
-    
+    game.load.spritesheet('enter', 'cubes/opening portal.png',48,48);  
     
 }// end preload function
 
@@ -21,8 +18,8 @@ var wallGroup;
 var map;
 var wall;
 var barrier;
-var begin;
-var end; 
+var open;
+var enter;
 function create() {
     
     
@@ -46,10 +43,6 @@ function create() {
     map=game.add.tilemap();
     map.addTilesetImage('WpartG',null,48,48);
     wall=map.create('wallkey',12,12,48,48);
-    
-   
-//    map.addTilesetImage('BBotBlue',null,96,48);
-//    barrier=map.create('borderkey
    // map.putTile(0,6,6,wall);
     map.setCollision(0);
     
@@ -62,7 +55,6 @@ function create() {
         
     ];
     
-     
     for (var WG=0; WG < allwalls.length; WG++) {
         console.log("Adding index #", WG);
         var coordinates = allwalls[WG];
@@ -70,15 +62,22 @@ function create() {
         var x = coordinates[0];
         var y = coordinates[1];
         map.putTile(0, x, y, wall);
-        
     }
     
-//    
-//    for(var bb = 1; bb <=4;bb++){
-//        map.putTile(0,x,y,);   
+    
+    
+     open=game.add.tilemap();
+    open.addTilesetImage('enter',null,48,48);
+    enter=open.create('o',12,12,48,48);
+    open.putTile(0,1,1,enter);
+    open.setCollision(0);
+    
+    
+//    for(var p = 1; p <=4;p++){
+//        map.putTile(0,4,WG,open);   
 //    }
-//    for(var bb = 2; bb <=4;bb++){
-//        map.putTile(0,x,y,);   
+//    for(var p = 2; p <=4;p++){
+//        map.putTile(0,WG,9,open);   
 //    }
     
 
