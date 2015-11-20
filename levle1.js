@@ -9,6 +9,8 @@ function preload() {
 
     game.load.spritesheet('enter', 'cubes/opening portal.png',48,48);  
     
+    game.load.spritesheet('barrier', 'cubes/Barior bottom(96,48).png',96,48); 
+    
 }// end preload function
 
 var player;
@@ -18,6 +20,7 @@ var wallGroup;
 var map;
 var wall;
 var barrier;
+var rim;
 var open;
 var enter;
 function create() {
@@ -72,6 +75,12 @@ function create() {
     open.putTile(0,1,1,enter);
     open.setCollision(0);
     
+     
+     rim=game.add.tilemap();
+    rim.addTilesetImage('barrier',null,48,48);
+    barrier=open.create('b',12,12,48,48);
+    rim.putTile(0,0,0,enter);
+    rim.setCollision(0);
     
 //    for(var p = 1; p <=4;p++){
 //        map.putTile(0,4,WG,open);   
