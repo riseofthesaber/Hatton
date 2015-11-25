@@ -19,8 +19,10 @@ var cursors;
 var wallGroup;
 var map;
 var wall;
+
 var barrier;
 var rim;
+
 var open;
 var enter;
 function create() {
@@ -47,6 +49,7 @@ function create() {
     map.addTilesetImage('WpartG',null,48,48);
     wall=map.create('wallkey',12,12,48,48);
    // map.putTile(0,6,6,wall);
+//    map.addTilesetImage('enter',null,48,48);
     map.setCollision(0);
     
     var allwalls = [
@@ -66,21 +69,23 @@ function create() {
         var y = coordinates[1];
         map.putTile(0, x, y, wall);
     }
+    map.replace(0,1,1,1,48,48);
     
     
     
-     open=game.add.tilemap();
-    open.addTilesetImage('enter',null,48,48);
-    enter=open.create('o',12,12,48,48);
-    open.putTile(0,1,1,enter);
-    open.setCollision(0);
+//     open=game.add.tilemap();
+//    open.addTilesetImage('enter',null,48,48);
+//    enter=open.create('o',12,12,48,48);
+//    map.putTile(0,1,1,enter);
+//    open.setCollision(0);
     
-     
-     rim=game.add.tilemap();
-    rim.addTilesetImage('barrier',null,48,48);
-    barrier=open.create('b',12,12,48,48);
-    rim.putTile(0,0,0,enter);
-    rim.setCollision(0);
+//    
+//          rim=game.add.tilemap();
+//    rim.addTilesetImage('barrier',null,96,48);
+//    barrier=rim.create('b',6,12,96,48);
+//    map.putTile(0,1,1,barrier);
+//    rim.setCollision(0);
+//    
     
 //    for(var p = 1; p <=4;p++){
 //        map.putTile(0,4,WG,open);   
@@ -89,13 +94,31 @@ function create() {
 //        map.putTile(0,WG,9,open);   
 //    }
     
-
+ barrier = game.add.group();
+    
+    barrier.enableBody = true;
+    
+rim = game.add.sprite(48, game.world.height 576, 'barrier');    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 } // end create function
 
 function update() {
     
     game.physics.arcade.collide(player,wall);
+    
+    game.physics.arcade.collide(player,open);
+    
     
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
