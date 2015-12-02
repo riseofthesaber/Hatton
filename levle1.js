@@ -161,7 +161,7 @@ function update() {
         player.body.velocity.x = 150;
     }
      
-    else if (cursors.up.isDown)
+    if (cursors.up.isDown)
     {
         //move right
         player.body.velocity.y = -150;
