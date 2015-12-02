@@ -119,18 +119,31 @@ lazrmap=game.add.tilemap();
     
     // Move between X = 6 and X = 8
     var X = 6;
+    var direction = 'right';
     var badtile = lazrmap.putTile(0,X,11,lazrwll);
     
     var numSeconds = 2;
     setInterval(function () {
+        console.log("Removing at position ", X);
         lazrmap.removeTile(X,11);
         
-        if (X == 6) { X = 7; }
-        else if (X == 7) { X = 8; }
-        else if (X== 8) { X = 9;}
-         else if (X== 9) { X = 8;}
+        if (X == 4) {
+            X = 5;
+            direction = 'right';
+        }
+        else if ((X >= 5)||(X<= 8)) {
+           if (direction  == 'right') {
+            X +=1 ;
+           } else {
+                X -= 1;
+            }
+        }
+       if (X== 9) {
+             X = 8;
+             direction = 'left';
+         }
         
-        
+           console.log("Adding at position ", X);
         
         badtile = lazrmap.putTile(0,X,11,lazrwll);
     }, numSeconds*1000);
