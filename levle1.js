@@ -11,6 +11,9 @@ function preload() {
     
     game.load.spritesheet('barrier', 'cubes/Barior bottom(96,48).png',96,48); 
     
+    game.load.spritesheet('lazercube', 'cubes/lazer cube (red).png',48,48);
+    
+    
 }// end preload function
 
 var player;
@@ -25,6 +28,10 @@ var rim;
 
 var open;
 var enter;
+
+var pro;
+var lazer;
+
 function create() {
     
     
@@ -93,14 +100,18 @@ function create() {
 //    for(var p = 2; p <=4;p++){
 //        map.putTile(0,WG,9,open);   
 //    }
+//    
+
+//    
+//    barrier.enableBody = true;
+//    
+//rim = game.add.sprite(48, game.world.height 576, 'barrier');    
+//    
     
- barrier = game.add.group();
-    
-    barrier.enableBody = true;
-    
-rim = game.add.sprite(48, game.world.height 576, 'barrier');    
     
     
+    
+  pro = game.add.spritesheet (48, 48, 'lazercube');
     
     
     
