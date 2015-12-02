@@ -32,6 +32,9 @@ var enter;
 var pro;
 var lazer;
 
+var lazrmap;
+var lazrwll;
+
 function create() {
     
     
@@ -76,7 +79,7 @@ function create() {
         var y = coordinates[1];
         map.putTile(0, x, y, wall);
     }
-    map.replace(0,1,1,1,48,48);
+//    map.replace(0,1,1,1,48,48);
     
     
     
@@ -109,14 +112,28 @@ function create() {
 //    
     
     
+       
+lazrmap=game.add.tilemap();
+     lazrmap.addTilesetImage('lazercube',null,48,48);
+  lazrwll=lazrmap.create('lazrkey',12,12,48,48);
     
+    // Move between X = 6 and X = 8
+    var X = 6;
+    var badtile = lazrmap.putTile(0,X,11,lazrwll);
     
-  pro = game.add.spritesheet (48, 48, 'lazercube');
-    
-    
-    
-    
-    
+    var numSeconds = 2;
+    setInterval(function () {
+        lazrmap.removeTile(X,11);
+        
+        if (X == 6) { X = 7; }
+        else if (X == 7) { X = 8; }
+        else if (X== 8) { X = 9;}
+         else if (X== 9) { X = 8;}
+        
+        
+        
+        badtile = lazrmap.putTile(0,X,11,lazrwll);
+    }, numSeconds*1000);
     
     
     
