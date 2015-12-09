@@ -116,7 +116,7 @@ function create() {
 lazrmap=game.add.tilemap();
      lazrmap.addTilesetImage('lazercube',null,48,48);
   lazrwll=lazrmap.create('lazrkey',12,12,48,48);
-    
+    lazrmap.setCollision(0);
     // Move between X = 6 and X = 8
     var X = 6;
     var direction = 'right';
@@ -131,7 +131,7 @@ lazrmap=game.add.tilemap();
             X = 5;
             direction = 'right';
         }
-        else if ((X >= 5)||(X<= 8)) {
+        else if ((X >= 5)||(X<= 9)) {
            if (direction  == 'right') {
             X +=1 ;
            } else {
@@ -139,14 +139,14 @@ lazrmap=game.add.tilemap();
             }
         }
        if (X== 9) {
-             X = 8;
+             X = 9;
              direction = 'left';
          }
         
            console.log("Adding at position ", X);
         
         badtile = lazrmap.putTile(0,X,11,lazrwll);
-    }, numSeconds*1000);
+    }, numSeconds*500);
     
     
     
@@ -160,6 +160,7 @@ function update() {
     
     game.physics.arcade.collide(player,open);
     
+    game.physics.arcade.collide(player,lazrwll);
     
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
